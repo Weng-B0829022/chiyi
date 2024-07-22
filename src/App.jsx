@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Header = () => (
-  <header className="bg-pure-white text-pure-black fixed w-full z-10">
-    <div className="container mx-auto px-4 py-2 flex justify-between items-center">
-      <div className="md:mt-0  flex justify-center ">
-        <img
-          src="/logo.png"
-          alt="憩旨"
-          className="rounded-full  h-20 object-cover border-4 border-pure-white shadow-lg"
-        />
-        <h1 className="text-pure-black  text-4xl font-['Ma_Shan_Zheng'] flex items-center">憩旨</h1>
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+    <header className={`bg-pure-white text-pure-black fixed w-full z-10 transition-all duration-300 ${isScrolled ? 'py-1' : 'py-2'}`}>
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        <div className={`md:mt-0 flex justify-center transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
+          <img
+            src="/logo.png"
+            alt="憩旨"
+            className={`rounded-full object-cover border-4 border-pure-white shadow-lg transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}
+          />
+          <h1 className={`text-pure-black font-['Ma_Shan_Zheng'] flex items-center transition-all duration-300 ${isScrolled ? 'text-3xl' : 'text-4xl'}`}>憩旨</h1>
+        </div>
+        
+        <nav>
+          <ul className="flex">
+            <li className="ml-6"><a href="#home" className="text-pure-black hover:text-vibrant-red">首頁</a></li>
+            <li className="ml-6"><a href="#services" className="text-pure-black hover:text-vibrant-red">服務</a></li>
+            <li className="ml-6"><a href="#pricing" className="text-pure-black hover:text-vibrant-red">價格</a></li>
+            <li className="ml-6"><a href="#booking" className="text-pure-black hover:text-vibrant-red">預約</a></li>
+          </ul>
+        </nav>
       </div>
-      
-      <nav>
-        <ul className="flex">
-          <li className="ml-6"><a href="#home" className="text-pure-black">首頁</a></li>
-          <li className="ml-6"><a href="#services" className="text-pure-black">服務</a></li>
-          <li className="ml-6"><a href="#pricing" className="text-pure-black">價格</a></li>
-          <li className="ml-6"><a href="#booking" className="text-pure-black hover:text-vibrant-red">預約</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 const Hero = () => (
   <section id="home" className="bg-cover bg-center h-screen flex items-center justify-center text-white relative" style={{backgroundImage: "url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"}}>
