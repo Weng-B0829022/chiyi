@@ -5,8 +5,8 @@ const Header = () => (
     <div className="container mx-auto px-4 py-2 flex justify-between items-center">
       <div className="md:mt-0  flex justify-center ">
         <img
-          src="https://scontent.ftpe8-4.fna.fbcdn.net/v/t39.30808-1/409211636_122110911950130503_5349387132384214800_n.jpg?stp=dst-jpg_s480x480&_nc_cat=111&ccb=1-7&_nc_sid=f4b9fd&_nc_ohc=uLhXISd_hoEQ7kNvgF9mnkf&_nc_ht=scontent.ftpe8-4.fna&oh=00_AYDTgb3a5hNLCZDa8s7K4hF-TxLYUtGCzkG_E7ax8KDmmA&oe=66A3A1D8"
-          alt="東方頤養"
+          src="/logo.png"
+          alt="憩旨"
           className="rounded-full  h-20 object-cover border-4 border-pure-white shadow-lg"
         />
         <h1 className="text-pure-black  text-4xl font-['Ma_Shan_Zheng'] flex items-center">憩旨</h1>
